@@ -1,0 +1,23 @@
+.list-group-item a {
+  display: block;
+}
+.rating {
+  border-style: inset;
+
+}
+
+.bprice {
+  text-decoration: line-through;
+}
+.thumbnail {
+  height: 400px;
+  &.detail {
+    height: auto;
+  }
+  a.name {
+    color: #333;
+  }
+  .hot{
+    color: #B00100;
+  }
+}

@@ -1,0 +1,30 @@
+<div class="review">
+  <div class="rating">
+ <p><strong>Score: <%= review.rating %></strong></p>
+
+  <strong><p class="review-comment">Comment: "<%= review.comment %>"</strong>
+  </div>
+
+
+      <% if User.find_by(id: session[:user_id]).nil? %>
+          <%= "------------Reviewed by other users:" %>
+          <%= review.created_at %>
+          <%= "------------Last changed:" %>
+          <%= review.updated_at %>
+      <% else %>
+      <% if review.user_id == current_user.id %>
+     <div class="links btn-group">
+       <%= "This is your review." %>
+       <%= link_to "Edit", edit_tplay_review_path(review.tplay, review),class: "btn btn-custom"%>
+       <%= link_to "Delete", tplay_review_path(review.tplay, review),method: :delete, data: { confrim:"Are you sure?"},class: "btn btn-custom"%>
+     </div>
+      <% else %>
+          <%= "------------Reviewed by other users:" %>
+          <%= review.created_at %>
+          <%= "------------Last changed:" %>
+          <%= review.updated_at %>
+      <% end -%>
+
+  <% end -%>
+  </p>
+</div>

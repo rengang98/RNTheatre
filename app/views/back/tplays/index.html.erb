@@ -1,0 +1,58 @@
+<div>
+  <div class="pull-right">
+    <%= link_to "Create Elements", new_back_tplay_path, class: "btn btn-primary" %>
+  </div>
+
+  <h1>
+
+    There are <%= @tplay.total_entries %> elements.
+
+  </h1>
+</div>
+
+<div>
+  <table class="table table-striped">
+
+    <th>Name</th>
+    <th>ID</th>
+    <th>Original price</th>
+    <th>Price</th>
+    <th>Remain</th>
+    <th>Status</th>
+    <th>Selling Status</th>
+    <th>Users review</th>
+    <th></th>
+    </tr>
+    <% @tplay.each do |c| %>
+        <tr>
+          <td><%= c.name %></td>
+          <td><%= c.tplay_id %></td>
+          <td><%= c.bprice %></td>
+          <td><%= c.price %></td>
+          <td><%= c.ticket %></td>
+          <td><%= c.status %></td>
+          <td><%= c.selling %></td>
+          <td>
+          <div class="row">
+            <div class="col-md-12">
+              <div class="reviews">
+                <div>
+                  <%= link_to "Add your Reviews", new_tplay_review_path(@tplay),
+                              class: "btn-custom"
+                  %>
+                </div>
+              </div>
+            </div>
+          </div>
+          </td>
+          <td align="right">
+            <%= link_to "Edit", edit_back_tplay_path(c) %>
+            <%= link_to "Images", back_tplay_tplay_images_path(tplay_id: c) %>
+            <%= link_to "Delete", back_tplay_path(c), method: :delete, 'data-confirm': "Are you sure? " %>
+          </td>
+        </tr>
+    <% end -%>
+  </table>
+
+  <%= will_paginate @tplay %>
+</div>

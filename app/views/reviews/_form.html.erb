@@ -1,0 +1,8 @@
+<%= simple_form_for([@tplay, @tplay.reviews.build]) do |f| %>
+<div id="rating-form">
+  <%= f.input :rating, :input_html => { :value => '5' }%>
+</div>
+    <%= f.input :comment , :input_html => { :value => 'This User didnt write anything...' } %>
+    Please no more than 150 words.
+    <%= f.button :submit, :class => "btn-custom2" %>
+<% end %>
